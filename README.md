@@ -14,3 +14,14 @@ Enterprise-grade public WiFi + ambient backscatter platform.
 ## Quick Start
 ```bash
 docker-compose up --build
+# Ambient WiFi C++ Core
+
+High-performance backend for public WiFi + edge gateway system.
+
+## Build
+mkdir build && cd build
+cmake ..
+make
+
+## Run
+./app
