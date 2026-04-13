@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  portal-api:
+    build: .
+    container_name: portal-api
+    env_file: .env
+    ports:
+      - "8080:8080"
+    networks:
+      - lan
+
+  session-service:
+    build: ./src/session
+    container_name: session-service
+    env_file: .env
+    networks:
+      - lan
+
+networks:
+  lan:
+    driver: bridge
