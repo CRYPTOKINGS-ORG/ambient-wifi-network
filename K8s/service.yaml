@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wifi-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: wifi
+  template:
+    metadata:
+      labels:
+        app: wifi
+    spec:
+      containers:
+      - name: wifi
+        image: yourrepo/ambient-wifi:latest
+        ports:
+        - containerPort: 8443
