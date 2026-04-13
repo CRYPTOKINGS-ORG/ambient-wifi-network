@@ -1,21 +1,24 @@
-#include "server/HttpServer.h"
+#include "core/Config.h"
+#include "core/Logger.h"
+#include "net/HttpServer.h"
 #include "edge/Gateway.h"
-#include "utils/EnvLoader.h"
 
 int main() {
-    EnvLoader env(".env");
+    Config config(".env");
 
-    int port = std::stoi(env.get("PORT"));
-    int gatewayPort = std::stoi(env.get("GATEWAY_PORT"));
+    int port = config.getInt("PORT");
+    int gatewayPort = config.getInt("GATEWAY_PORT");
 
-    HttpServer server(port);
+    Logger::info("Starting system...");
+
+    HttpServer server(port, config);
     Gateway gateway(gatewayPort);
 
-    std::thread serverThread([&]() { server.start(); });
-    std::thread gatewayThread([&]() { gateway.start(); });
+    std::thread t1([&]() { server.start(); });
+    std::thread t2([&]() { gateway.start(); });
 
-    serverThread.join();
-    gatewayThread.join();
+    t1.join();
+    t2.join();
 
     return 0;
 }
