@@ -1,0 +1,2 @@
+add_library(interference InterferenceClassifier.cpp)
+target_include_directories(interference PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
