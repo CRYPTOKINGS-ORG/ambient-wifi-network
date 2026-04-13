@@ -1,0 +1,7 @@
+add_subdirectory(orchestrator)
+add_subdirectory(telemetry)
+add_subdirectory(optimizer)
+add_subdirectory(spectrum)
+add_subdirectory(interference)
+add_subdirectory(digital_twin)
+add_subdirectory(scheduler)
